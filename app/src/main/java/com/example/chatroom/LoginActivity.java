@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 .requestIdToken("48922602348-ks1c53s9o4viaqh2snspdnm9bf8c2452.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
     }
     public void startLogin(View view){
