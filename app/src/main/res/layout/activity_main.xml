@@ -15,7 +15,20 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/toolbar_round_background"
         android:layout_margin="10dp"
-        android:elevation="5dp"/>
+        android:elevation="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Global Chat Room"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#323232" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -43,7 +56,7 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/chat_box"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="start Messaging"
@@ -59,6 +72,8 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="5dp"
                 android:scaleType="centerCrop"
+                android:background="@drawable/round_ripple"
+                android:padding="5dp"
                 android:src="@drawable/ic_baseline_camera_alt_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,10 +86,13 @@
                 android:layout_height="40dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_send_24"
+                android:background="@drawable/round_ripple"
+                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.954"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="addMessage"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
