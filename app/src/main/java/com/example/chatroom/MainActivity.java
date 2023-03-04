@@ -6,6 +6,8 @@ import static com.example.chatroom.cords.FirebaseCords.mAuth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,12 +19,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.chatroom.adapter.ChatAdapter;
 import com.example.chatroom.cords.FirebaseCords;
+import com.example.chatroom.model.ChatModel;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.Query;
 
 
 import java.text.SimpleDateFormat;
@@ -39,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this,LoginActivity.class));
             finish();
         }
+        chatAdapter.startListening();
     }
 
     @Override
@@ -58,8 +65,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     Toolbar toolbar;
     EditText chat_box;
+    RecyclerView chat_list;
+
+    ChatAdapter chatAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +83,24 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         chat_box = findViewById(R.id.chat_box);
+        chat_list = findViewById(R.id.chat_list);
+
+        initChatList();
+    }
+
+    private void initChatList() {
+
+        chat_list.setHasFixedSize(true);
+        chat_list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,true));
+
+
+        Query query = MAIN_CHAT_DATABASE.orderBy("timestamp", Query.Direction.DESCENDING);
+        FirestoreRecyclerOptions<ChatModel> option = new FirestoreRecyclerOptions.Builder<ChatModel>()
+                .setQuery(query,ChatModel.class)
+                .build();
+        chatAdapter = new ChatAdapter(option);
+        chat_list.setAdapter(chatAdapter);
+        chatAdapter.startListening();
     }
 
     public void addMessage(View view){
