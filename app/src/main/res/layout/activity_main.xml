@@ -67,7 +67,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageButton"
                 app:layout_constraintStart_toEndOf="@+id/imageView" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -75,13 +75,14 @@
                 android:scaleType="centerCrop"
                 android:background="@drawable/round_ripple"
                 android:padding="5dp"
+                android:onClick="OpenExplorer"
                 android:src="@drawable/ic_baseline_camera_alt_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.031"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

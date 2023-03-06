@@ -4,12 +4,17 @@ import static com.example.chatroom.cords.FirebaseCords.MAIN_CHAT_DATABASE;
 import static com.example.chatroom.cords.FirebaseCords.mAuth;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,6 +34,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.Query;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 
 import java.text.SimpleDateFormat;
@@ -71,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView chat_list;
 
     ChatAdapter chatAdapter;
+
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +148,53 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+    }
+    public void OpenExplorer(View view){
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED){
+            ChoseImage();
+        }else{
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)){
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},20);
+            }else{
+                Toast.makeText(this,"storage permission needed",Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},20);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 20){
+            if(grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this,"permission granted",Toast.LENGTH_SHORT).show();
+                ChoseImage();
+            }else{
+                Toast.makeText(this,"permission Denied",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void ChoseImage(){
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .start(MainActivity.this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if(resultCode == RESULT_OK){
+                imageUri = result.getUri();
+                startActivity(new Intent(MainActivity.this, ImageUploadPreview.class)
+                        .putExtra("image_uri",imageUri.toString()));
+            }else if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+                Toast.makeText(this,result.getError().getMessage(),Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
