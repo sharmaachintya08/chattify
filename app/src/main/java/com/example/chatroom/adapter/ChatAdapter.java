@@ -1,5 +1,6 @@
 package com.example.chatroom.adapter;
 
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,17 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<ChatModel,ChatAdapter.
         Glide.with(holder.user_image.getContext().getApplicationContext())
                 .load(model.getUser_image_url())
                 .into(holder.user_image);
+
+        if(model.getChat_image() != null){
+            if(!model.getChat_image().equals("")){
+                Glide.with(holder.chat_image.getContext().getApplicationContext())
+                        .load(model.getUser_image_url())
+                        .into(holder.chat_image);
+                holder.chat_image.setVisibility(View.VISIBLE);
+            }else{
+                holder.chat_image.setVisibility(View.GONE);
+            }
+        }
     }
 
     @NonNull
@@ -43,12 +55,14 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<ChatModel,ChatAdapter.
 
         TextView message ;
         ImageView user_image;
+        ImageView chat_image;
 
         public ChatViewHolder(@NonNull View itemView) {
 
             super(itemView);
             message = itemView.findViewById(R.id.message);
             user_image = itemView.findViewById(R.id.user_image);
+            chat_image = itemView.findViewById(R.id.chat_image);
         }
     }
 }

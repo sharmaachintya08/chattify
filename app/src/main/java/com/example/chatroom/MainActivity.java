@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
             messageObj.put("user_name",user.getDisplayName());
             messageObj.put("timestamp", FieldValue.serverTimestamp());
             messageObj.put("messageID",messageID);
+            messageObj.put("chat_image","");
             messageObj.put("user_image_url",user_image_url);
 
             MAIN_CHAT_DATABASE.document(messageID).set(messageObj).addOnCompleteListener(new OnCompleteListener<Void>() {
