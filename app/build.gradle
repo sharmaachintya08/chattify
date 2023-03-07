@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.1.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.google.firebase:firebase-firestore:24.4.4'
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
 
     //outside lib
     implementation 'com.github.captain-miao:optroundcardview:1.0.0'
@@ -60,4 +61,7 @@ dependencies {
 
     //android-image-cropper
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
+    //volley
+    implementation 'com.android.volley:volley:1.2.1'
 }
