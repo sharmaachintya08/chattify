@@ -60,11 +60,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.github.captain_miao.optroundcardview.OptRoundCardView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/chat_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@android:color/transparent"
         android:clipToPadding="false"
         android:paddingTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
@@ -77,9 +87,10 @@
         android:layout_height="60dp"
         android:background="@color/white"
         app:optRoundCardCornerRadius="30dp"
-        app:optRoundCardLeftBottomCorner="false"
+        android:layout_margin="10dp"
         app:optRoundCardRightBottomCorner="false"
-        app:optRoundCardElevation="5dp"
+        app:optRoundCardLeftTopCorner="true"
+        app:optRoundCardRightTopCorner="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
