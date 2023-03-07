@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    Toolbar toolbar;
     EditText chat_box;
     RecyclerView chat_list;
 
@@ -90,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseMessaging.getInstance().subscribeToTopic("global_chat");
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         chat_box = findViewById(R.id.chat_box);
         chat_list = findViewById(R.id.chat_list);
@@ -202,5 +198,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,result.getError().getMessage(),Toast.LENGTH_SHORT).show();
             }
         }
+    }
+    public void Finish(View view){
+        finish();
     }
 }
