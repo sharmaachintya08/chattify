@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.chatroom.adapter.ChatAdapter;
 import com.example.chatroom.cords.FirebaseCords;
+import com.example.chatroom.fcm.SendPushNotification;
 import com.example.chatroom.model.ChatModel;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FirebaseMessaging.getInstance().subscribeToTopic("global_chat");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -142,7 +145,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(MainActivity.this,"Message send",Toast.LENGTH_SHORT).show();
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic("global_chat");
+                        SendPushNotification sendPushNotification = new SendPushNotification(MainActivity.this);
+                        sendPushNotification.startPush(user.getDisplayName(),message,"global_chat");
                         chat_box.setText("");
                     }else{
                         Toast.makeText(MainActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
