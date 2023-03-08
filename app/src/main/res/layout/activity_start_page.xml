@@ -67,6 +67,7 @@
                     android:orientation="horizontal"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/notification_count"
                         android:layout_margin="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
