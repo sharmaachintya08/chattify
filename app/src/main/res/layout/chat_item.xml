@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/user_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -59,15 +59,15 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="52dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="This is a long message to check the ui is working or not "
+                android:text="This is a really long message to check if the code is working properly"
                 android:textAlignment="textStart"
                 android:textColor="#323232"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/user_image"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.github.captain_miao.optroundcardview.OptRoundCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ public class NotificationUtils {
     Map<String,Class> activityMap = new HashMap<>();
 
     public NotificationUtils(Context applicationContext) {
-        this.context = context;
+        this.context = applicationContext;
         activityMap.put("MainActivity", MainActivity.class);
     }
 
