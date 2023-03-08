@@ -58,7 +58,7 @@
                 android:layout_height="45dp"
                 android:background="@android:color/transparent"
                 android:hint="start Messaging"
-                android:padding="15dp"
+                android:paddingLeft="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton"
                 app:layout_constraintHorizontal_bias="0.941"

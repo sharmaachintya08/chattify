@@ -80,7 +80,8 @@
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optRoundCardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/optRoundCardView2"
+        android:layout_marginBottom="5dp"/>
     <com.github.captain_miao.optroundcardview.OptRoundCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -103,41 +104,45 @@
                 android:id="@+id/chat_box"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="start Messaging"
                 android:background="@android:color/transparent"
+                android:hint="start Messaging"
                 android:padding="15dp"
+                android:layout_marginTop="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton"
-                app:layout_constraintStart_toEndOf="@+id/imageView" />
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/imageView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="5dp"
-                android:scaleType="centerCrop"
                 android:background="@drawable/round_ripple"
-                android:padding="5dp"
                 android:onClick="OpenExplorer"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_camera_alt_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.031"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@drawable/round_ripple"
+                android:onClick="addMessage"
+                android:padding="5dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_send_24"
-                android:background="@drawable/round_ripple"
-                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.954"
                 app:layout_constraintStart_toStartOf="parent"
-                android:onClick="addMessage"/>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.github.captain_miao.optroundcardview.OptRoundCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
