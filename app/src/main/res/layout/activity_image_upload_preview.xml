@@ -61,7 +61,7 @@
                 android:padding="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton"
-                app:layout_constraintHorizontal_bias="0.411"
+                app:layout_constraintHorizontal_bias="0.941"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />

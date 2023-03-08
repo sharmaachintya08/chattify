@@ -32,15 +32,13 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<ChatModel,ChatAdapter.
                 .load(model.getUser_image_url())
                 .into(holder.user_image);
 
-        if(model.getChat_image() != null){
-            if(!model.getChat_image().equals("")){
-                Glide.with(holder.chat_image.getContext().getApplicationContext())
-                        .load(model.getChat_image())
-                        .into(holder.chat_image);
-                holder.chat_image.setVisibility(View.VISIBLE);
-            }else{
-                holder.chat_image.setVisibility(View.GONE);
-            }
+        if(!model.getChat_image().equals("")){
+            Glide.with(holder.chat_image.getContext().getApplicationContext())
+                    .load(model.getChat_image())
+                    .into(holder.chat_image);
+            holder.chat_image.setVisibility(View.VISIBLE);
+        }else{
+            holder.chat_image.setVisibility(View.GONE);
         }
     }
 
