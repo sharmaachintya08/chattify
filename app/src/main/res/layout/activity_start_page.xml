@@ -71,7 +71,7 @@
                         android:layout_margin="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:visibility="gone"
                         android:background="@drawable/round_notification_icon"
                         android:paddingTop="5dp"
                         android:textColor="@color/white"
