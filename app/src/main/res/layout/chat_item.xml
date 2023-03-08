@@ -32,21 +32,19 @@
                 android:id="@+id/user_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ImageContrastCheck" />
+                tools:ignore="ImageContrastCheck"
+                android:layout_marginBottom="5dp"/>
 
             <ImageView
                 android:id="@+id/chat_image"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
-                android:visibility="gone"
                 android:src="@drawable/chat_background"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/message"
                 app:layout_constraintEnd_toStartOf="@+id/user_image"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,20 +52,20 @@
 
             <TextView
                 android:id="@+id/message"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="52dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="This is a really long message to check if the code is working properly"
+                android:text="Hello this is some new padding lets check how this is working  "
                 android:textAlignment="textStart"
                 android:textColor="#323232"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/user_image"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginLeft="10dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.github.captain_miao.optroundcardview.OptRoundCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
