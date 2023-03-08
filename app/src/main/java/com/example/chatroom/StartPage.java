@@ -25,6 +25,25 @@ public class StartPage extends AppCompatActivity {
     TextView notification_count;
 
     @Override
+    protected void onStart(){
+        super.onStart();
+        long lastClickTime = new SaveState(this).getClickTime();
+        Query query = MAIN_CHAT_DATABASE.orderBy("timestamp",Query.Direction.DESCENDING)
+                .whereGreaterThanOrEqualTo("timestamp",lastClickTime);
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(value.getDocuments().size() == 0){
+                    notification_count.setVisibility(View.GONE);
+                }else{
+                    notification_count.setVisibility(View.VISIBLE);
+                }
+                notification_count.setText(""+value.getDocuments().size());
+            }
+        });
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
@@ -32,16 +51,6 @@ public class StartPage extends AppCompatActivity {
         Glide.with(this).load(R.drawable.people_talking).into((ImageView)findViewById(R.id.imageView2));
 
         notification_count =  findViewById(R.id.notification_count);
-        long lastClickTime = new SaveState(this).getClickTime();
-        Query query = MAIN_CHAT_DATABASE.orderBy("timestamp",Query.Direction.DESCENDING)
-                .whereGreaterThanOrEqualTo("timestamp",lastClickTime);
-        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                notification_count.setVisibility(View.VISIBLE);
-                notification_count.setText(""+value.getDocuments().size());
-            }
-        });
     }
     public void openMainPage(View view){
         long currentTime = new Date().getTime();
