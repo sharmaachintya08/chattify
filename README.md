@@ -5,3 +5,6 @@ Working of Chattify:-
 ![alt text](https://github.com/sharmaachintya08/pictures/blob/master/Screenshot%202023-03-10%20162741.png)
 ![alt text](https://github.com/sharmaachintya08/pictures/blob/master/Screenshot%202023-03-10%20162821.png)
 ![alt text](https://github.com/sharmaachintya08/pictures/blob/master/Screenshot%202023-03-10%20163429.png)
+![alt text](https://github.com/sharmaachintya08/pictures/blob/master/Screenshot%202023-03-10%20163452.png)
+![alt text](https://github.com/sharmaachintya08/pictures/blob/master/Screenshot%202023-03-10%20163504.png)
+![alt text](https://github.com/sharmaachintya08/pictures/blob/master/Screenshot%202023-03-10%20163515.png)
